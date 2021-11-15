@@ -10,7 +10,7 @@ export class PageComponent implements OnInit {
   components: any;
 
   constructor(private storyblok: StoryblokService) {
-    import('src/app/components').then(cp => {
+    import('src/app/storyblok/components').then(cp => {
       this.components = cp.Components;
     });
   }

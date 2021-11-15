@@ -1,24 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { StoryblokService } from './storyblok.service';
-import { Components } from './components';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
-  story = { content: null, name: '' };
-  components = Components;
+export class AppComponent {
 
-  constructor(private storyblokService: StoryblokService) {
-    window.storyblok.init();
-    window.storyblok.on(['change', 'published'], function () {
-      location.reload(true)
-    });
-  }
+  constructor() {
 
-  ngOnInit() {
-    this.storyblokService.getStory('home', { version: 'draft' })
-      .then(data => this.story = data.story);
   }
 }
