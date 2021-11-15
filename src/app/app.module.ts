@@ -1,14 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from "@ngrx/store";
+import { AppRoutingModule } from "@spartacus/storefront";
 import { DynamicModule } from 'ng-dynamic-component';
 import { AppComponent } from './app.component';
-import { StoryblokService } from './storyblok.service';
-import { StoryblokDirective } from './storyblok.directive';
-import { TeaserComponent } from './teaser/teaser.component';
+import { FeatureComponent } from './feature/feature.component';
 import { GridComponent } from './grid/grid.component';
 import { PageComponent } from './page/page.component';
-import { FeatureComponent } from './feature/feature.component';
-
+import { SpartacusModule } from './spartacus/spartacus.module';
+import { StoryblokDirective } from './storyblok.directive';
+import { StoryblokService } from './storyblok.service';
+import { TeaserComponent } from './teaser/teaser.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +25,12 @@ import { FeatureComponent } from './feature/feature.component';
   ],
   imports: [
     BrowserModule,
-    DynamicModule
-    // DynamicModule.withComponents([
-    //   PageComponent,
-    //   TeaserComponent,
-    //   GridComponent,
-    //   FeatureComponent
-    // ])
+    HttpClientModule,
+    AppRoutingModule,
+    DynamicModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    SpartacusModule
   ],
   providers: [
     StoryblokService
