@@ -8,6 +8,8 @@ import { TeaserComponent } from './teaser/teaser.component';
 import { GridComponent } from './grid/grid.component';
 import { FeatureComponent } from './feature/feature.component';
 import { CommonModule } from '@angular/common';
+import { CmsPageConnector } from '@spartacus/core';
+import { StoryBookPageConnector } from './storybook-page.connector';
 
 @NgModule({
   imports: [
@@ -26,7 +28,11 @@ import { CommonModule } from '@angular/common';
     StoryblokRootComponent
   ],
   providers: [
-    StoryblokService
+    StoryblokService,
+    {
+      provide: CmsPageConnector,
+      useClass: StoryBookPageConnector
+    }
   ]
 })
 export class StoryblokModule {
