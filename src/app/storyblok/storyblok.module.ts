@@ -9,6 +9,8 @@ import { GridComponent } from './grid/grid.component';
 import { FeatureComponent } from './feature/feature.component';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product/product.component';
+import { CmsPageConnector } from '@spartacus/core';
+import { StoryBookPageConnector } from './storybook-page.connector';
 
 @NgModule({
   imports: [
@@ -28,7 +30,11 @@ import { ProductComponent } from './product/product.component';
     StoryblokRootComponent
   ],
   providers: [
-    StoryblokService
+    StoryblokService,
+    {
+      provide: CmsPageConnector,
+      useClass: StoryBookPageConnector
+    }
   ]
 })
 export class StoryblokModule {
