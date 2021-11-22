@@ -8,7 +8,7 @@ import { StoryblokService } from './storyblok.service';
     <div class="root">
 
       <div *ngIf="story.content">
-        <ndc-dynamic [ndcDynamicComponent]="components[story.content.component]" [ndcDynamicInputs]="story.content">
+        <ndc-dynamic [ndcDynamicComponent]="components['product']" [ndcDynamicInputs]="story.content">
         </ndc-dynamic>
       </div>
 
@@ -16,18 +16,23 @@ import { StoryblokService } from './storyblok.service';
   `
 })
 export class StoryblokRootComponent implements OnInit {
+
   story = { content: null, name: '' };
+
   components = Components;
 
   constructor(private storyblokService: StoryblokService) {
     window.storyblok.init();
     window.storyblok.on(['change', 'published'], function() {
       location.reload(true);
+      console.log('x')
     });
   }
 
   ngOnInit() {
-    this.storyblokService.getStory('home', { version: 'draft' })
-      .then(data => this.story = data.story);
+    this.storyblokService.getStory('product', { version: 'draft' })
+      .then(data => {
+        this.story = data.story;
+      });
   }
 }

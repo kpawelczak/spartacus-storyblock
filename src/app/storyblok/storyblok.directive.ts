@@ -9,7 +9,6 @@ export class StoryblokDirective {
   appStoryblok: string = '';
 
   constructor(private el: ElementRef) {
-
   }
 
   ngOnInit() {
@@ -17,7 +16,12 @@ export class StoryblokDirective {
       return;
     }
 
-    let options = JSON.parse(this.appStoryblok.replace('<!--#storyblok#', '').replace('-->', ''));
+    let options
+      = JSON.parse(
+      this.appStoryblok
+        .replace('<!--#storyblok#', '')
+        .replace('-->', '')
+    );
 
     this.el.nativeElement.setAttribute('data-blok-c', JSON.stringify(options));
     this.el.nativeElement.setAttribute('data-blok-uid', options.id + '-' + options.uid);

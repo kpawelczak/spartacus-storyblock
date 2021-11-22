@@ -1,0 +1,18 @@
+<div class="column" [appStoryblok]="_editable">
+  <h2>{{ name }}</h2>
+  <p>Sku: {{sku}}</p>
+  <p>Price: {{price}}</p>
+
+  <ng-container *ngFor="let item of items">
+
+    <ng-container [ngSwitch]="item.type">
+
+      <p *ngSwitchDefault>
+        {{item.content.text}}
+      </p>
+
+    </ng-container>
+
+  </ng-container>
+
+</div>

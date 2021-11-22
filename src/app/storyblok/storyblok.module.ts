@@ -8,6 +8,7 @@ import { TeaserComponent } from './teaser/teaser.component';
 import { GridComponent } from './grid/grid.component';
 import { FeatureComponent } from './feature/feature.component';
 import { CommonModule } from '@angular/common';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     StoryblokDirective,
     TeaserComponent,
     GridComponent,
-    FeatureComponent
+    FeatureComponent,
+    ProductComponent
   ],
   exports: [
     StoryblokRootComponent
